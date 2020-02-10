@@ -15,6 +15,7 @@
 		90DC0AC623F0B87100FF9E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90DC0AC423F0B87100FF9E22 /* Main.storyboard */; };
 		90DC0AC823F0B87300FF9E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DC0AC723F0B87300FF9E22 /* Assets.xcassets */; };
 		90DC0ACB23F0B87300FF9E22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90DC0AC923F0B87300FF9E22 /* LaunchScreen.storyboard */; };
+		90DC0AD323F0D40500FF9E22 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC0AD223F0D40500FF9E22 /* PlayerState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		90DC0AC723F0B87300FF9E22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90DC0ACA23F0B87300FF9E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90DC0ACC23F0B87300FF9E22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90DC0AD223F0D40500FF9E22 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				90DC0ABC23F0B87100FF9E22 /* GameScene.sks */,
 				90DC0ABE23F0B87100FF9E22 /* Actions.sks */,
 				90DC0AC023F0B87100FF9E22 /* GameScene.swift */,
+				90DC0AD223F0D40500FF9E22 /* PlayerState.swift */,
 				90DC0AC223F0B87100FF9E22 /* GameViewController.swift */,
 				90DC0AC423F0B87100FF9E22 /* Main.storyboard */,
 				90DC0AC723F0B87300FF9E22 /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 			files = (
 				90DC0AC123F0B87100FF9E22 /* GameScene.swift in Sources */,
 				90DC0AC323F0B87100FF9E22 /* GameViewController.swift in Sources */,
+				90DC0AD323F0D40500FF9E22 /* PlayerState.swift in Sources */,
 				90DC0ABB23F0B87100FF9E22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
