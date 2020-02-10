@@ -14,6 +14,12 @@ class GameScene: SKScene {
     var player : SKNode?
     var joystick : SKNode?
     var joystickknob : SKNode?
+    var Cameranode : SKCameraNode?
+    var mountain1 : SKNode?
+    var mountain2 : SKNode?
+    var mountain3 : SKNode?
+    var moon : SKNode?
+    var stars : SKNode?
     
     //boolean
     
@@ -36,7 +42,12 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
       
-        
+        Cameranode = childNode(withName: "CameraNode") as? SKCameraNode
+        mountain1 = childNode(withName: "Mountain1")
+         mountain2 = childNode(withName: "Mountain2")
+         mountain3 = childNode(withName: "Mountain4")
+        moon = childNode(withName: "Moon")
+        stars = childNode(withName: "stars")
         player = childNode(withName: "player")
         joystick = childNode(withName: "Joystick")
         joystickknob = joystick?.childNode(withName: "knob")
@@ -144,6 +155,15 @@ extension GameScene
         
         previoustime = currentTime
         
+        
+        //camera
+        
+        Cameranode?.position.x = player!.position.x
+        joystick?.position.y = (Cameranode?.position.y)! - 100
+        joystick?.position.x = (Cameranode?.position.x)! - 300
+        
+        
+        
         //player movement
         
         guard let joystickknob = joystickknob else {return}
@@ -189,5 +209,26 @@ extension GameScene
         }
         
         player?.run(faceaction)
+        
+        //background parallax
+        
+        let parallax1 = SKAction.moveTo(x: (player?.position.x)!/(-10), duration: 0.0)
+        mountain1?.run(parallax1)
+        
+        let parallax2  = SKAction.moveTo(x: (player?.position.x)!/(-20), duration: 0.0)
+        mountain2?.run(parallax2)
+        
+        let parallax3 = SKAction.moveTo(x: (player?.position.x)!/(-40), duration: 0.0)
+        mountain3?.run(parallax3)
+        
+        let parallax4 = SKAction.moveTo(x: (Cameranode?.position.x)!, duration: 0.0)
+        moon?.run(parallax4)
+        
+        let parallax5 = SKAction.moveTo(x: (Cameranode?.position.x)!, duration: 0.0)
+               stars?.run(parallax5)
+        
+        
+        
+        
     }
 }
