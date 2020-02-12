@@ -25,6 +25,7 @@ class GameScene: SKScene {
     
     var joystickAction = false
     var knobRadius : CGFloat = 50.0
+    var oxygenisnottouched = true
     
     //spriteengine
     var previoustime : TimeInterval = 0
@@ -73,7 +74,14 @@ class GameScene: SKScene {
             self.renderMeteor()
         }
         
+        scorelabel.position = CGPoint(x: (Cameranode?.position.x)! + 310, y: 140)
         
+        scorelabel.fontColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        scorelabel.fontSize = 24
+        scorelabel.fontName = "Ariel"
+        scorelabel.horizontalAlignmentMode = .right
+        scorelabel.text = String(score)
+        Cameranode?.addChild(scorelabel)
     }
     
    
@@ -157,6 +165,11 @@ func resetknob()  {
     joystickknob?.run(moveback)
     joystickAction = false
 }
+    func oxygentouch()  {
+        score += 1
+        scorelabel.text = String(score)
+    }
+    
 }
 
 
@@ -170,6 +183,7 @@ extension GameScene
         
         previoustime = currentTime
         
+        oxygenisnottouched = true
         
         //camera
         
@@ -279,8 +293,30 @@ extension GameScene : SKPhysicsContactDelegate
         if collision.matches(.player, .ground) {
             playerstate.enter(landingState.self)
                }
-               
-               if collision.matches(.ground, .kill) {
+       
+        if collision.matches(.player, .oxygen)
+        {
+            if contact.bodyA.node?.name == "oxygen" {
+                contact.bodyA.node?.physicsBody?.categoryBitMask = 0
+                
+            }
+            
+            else  if contact.bodyB.node?.name == "oxygen" {
+                           contact.bodyB.node?.physicsBody?.categoryBitMask = 0
+                contact.bodyB.node?.removeFromParent()
+                       }
+            
+            if oxygenisnottouched
+            {
+                oxygentouch()
+                oxygenisnottouched = false
+            }
+        }
+        
+        
+        
+        
+        if collision.matches(.ground, .kill) {
                    if contact.bodyA.node?.name == "Meteor", let meteor = contact.bodyA.node {
                        createMolten(at: meteor.position)
                        meteor.removeFromParent()
