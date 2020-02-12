@@ -55,6 +55,9 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         physicsWorld.contactDelegate = self
+//
+//        let soundaction = SKAction.repeatForever(SKAction.playSoundFileNamed("music.wav", waitForCompletion: false))
+//        run(soundaction)
       
         Cameranode = childNode(withName: "CameraNode") as? SKCameraNode
         mountain1 = childNode(withName: "Mountain1")
@@ -118,6 +121,7 @@ extension GameScene
             if !(joystick?.contains(location))!
             {
                 playerstate.enter(Jumping.self)
+                run(Sound.jump.action)
             }
         }
        }
@@ -213,6 +217,7 @@ func resetknob()  {
         else
         {
             dying()
+            gameoverscene()
         }
         imorttal()
     }
@@ -232,6 +237,11 @@ func resetknob()  {
         player?.run(dieAction)
         self.removeAllActions()
         listlives(count: 3)
+    }
+    func gameoverscene()
+    {
+        let gameoverScene = GameScene(fileNamed: "GameOver")
+        self.view?.presentScene(gameoverScene)
     }
     
     
@@ -353,6 +363,7 @@ extension GameScene : SKPhysicsContactDelegate
         {
           looselife()
             iscollided = true
+            run(Sound.hit.action)
             playerstate.enter(shockedState.self)
         }
         
@@ -377,6 +388,7 @@ extension GameScene : SKPhysicsContactDelegate
                 oxygentouch()
                 oxygenisnottouched = false
             }
+            run(Sound.oxygen.action)
         }
         
         
@@ -392,6 +404,7 @@ extension GameScene : SKPhysicsContactDelegate
                        createMolten(at: meteor.position)
                        meteor.removeFromParent()
                    }
+            run(Sound.meteorFalling.action)
                }
         
         
