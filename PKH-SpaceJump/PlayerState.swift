@@ -32,6 +32,8 @@ class Jumping: PlayerState {
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         
+        if stateClass is shockedState.Type { return true }
+        
         if finishedJumping && stateClass is landingState.Type {return true}
         return false
         
@@ -120,5 +122,30 @@ class movingState : PlayerState
 
 class shockedState : PlayerState
 {
+    var isshocked : Bool = false
     
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        if isshocked {return false}
+        
+        switch stateClass {
+        case is idleState.Type: return true
+            
+        default:
+            return false
+        }
+    }
+    let action = SKAction.repeat(.sequence([
+        .fadeAlpha(to: 0.5, duration: 0.01),
+        .wait(forDuration: 0.25),
+        .fadeAlpha(to: 1.0, duration: 0.01),
+        .wait(forDuration: 0.25),]), count: 5)
+    
+    override func didEnter(from previousState: GKState?) {
+        isshocked = true
+        playerNode.run(action)
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
+            self.isshocked = false
+            self.stateMachine?.enter(idleState.self)
+        }
+    }
 }

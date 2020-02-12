@@ -26,6 +26,7 @@ class GameScene: SKScene {
     var joystickAction = false
     var knobRadius : CGFloat = 50.0
     var oxygenisnottouched = true
+    var iscollided = false
     
     //spriteengine
     var previoustime : TimeInterval = 0
@@ -40,6 +41,11 @@ class GameScene: SKScene {
     
     var scorelabel = SKLabelNode()
     var score = 0
+    
+    //lives
+    
+    var livesArray = [SKSpriteNode]()
+    let container = SKSpriteNode()
     
     
     
@@ -67,6 +73,13 @@ class GameScene: SKScene {
             shockedState(playerNode: player!)
           ])
         playerstate.enter(idleState.self)
+        
+        //lives
+        container.position = CGPoint(x: -300, y: 140)
+        container.zPosition = 5
+        Cameranode?.addChild(container)
+        
+        listlives(count: 3)
         
         
         //timer for meteor
@@ -169,6 +182,58 @@ func resetknob()  {
         score += 1
         scorelabel.text = String(score)
     }
+    func listlives(count: Int)
+        
+    {
+        for i in 1...count
+        {
+            let lives = SKSpriteNode(imageNamed: "heart")
+            let xposition = lives.size.width * CGFloat(i - 1)
+            lives.position = CGPoint(x: xposition, y: 0)
+            livesArray.append(lives)
+            container.addChild(lives)
+        }
+    }
+    
+   func  looselife()
+   {
+    if iscollided == true
+    {
+        let lastelement = livesArray.count - 1
+        if livesArray.indices.contains(lastelement - 1)
+        {
+            let lastlife = livesArray[lastelement]
+            lastlife.removeFromParent()
+            livesArray.remove(at: lastelement)
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: true)
+            {(timer) in
+                self.iscollided = false
+            }
+        }
+        else
+        {
+            dying()
+        }
+        imorttal()
+    }
+    }
+   func imorttal()
+   {
+    player?.physicsBody?.categoryBitMask = 0
+    Timer.scheduledTimer(withTimeInterval: 2, repeats: false)
+    {(timer) in
+        self.player?.physicsBody?.categoryBitMask = 2
+    }
+    }
+    
+    func dying()
+    {
+        let dieAction = SKAction.move(to: CGPoint(x: -300, y: 0), duration: 0.1)
+        player?.run(dieAction)
+        self.removeAllActions()
+        listlives(count: 3)
+    }
+    
     
 }
 
@@ -286,8 +351,9 @@ extension GameScene : SKPhysicsContactDelegate
         
         if collision.matches(.player, .kill)
         {
-            let die = SKAction.move(to: CGPoint(x: -300, y: -100), duration: 0.0)
-            player?.run(die)
+          looselife()
+            iscollided = true
+            playerstate.enter(shockedState.self)
         }
         
         if collision.matches(.player, .ground) {
