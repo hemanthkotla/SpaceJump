@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		90DC0AB723F0B87100FF9E22 /* PKH-SpaceJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PKH-SpaceJump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90DC0AB723F0B87100FF9E22 /* SpaceJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90DC0ABA23F0B87100FF9E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90DC0ABC23F0B87100FF9E22 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		90DC0ABE23F0B87100FF9E22 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		90DC0AB823F0B87100FF9E22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90DC0AB723F0B87100FF9E22 /* PKH-SpaceJump.app */,
+				90DC0AB723F0B87100FF9E22 /* SpaceJump.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,7 +93,7 @@
 			);
 			name = "PKH-SpaceJump";
 			productName = "PKH-SpaceJump";
-			productReference = 90DC0AB723F0B87100FF9E22 /* PKH-SpaceJump.app */;
+			productReference = 90DC0AB723F0B87100FF9E22 /* SpaceJump.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -304,9 +304,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hemanth.PKH-SpaceJump";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SpaceJump;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -322,9 +322,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hemanth.PKH-SpaceJump";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SpaceJump;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
