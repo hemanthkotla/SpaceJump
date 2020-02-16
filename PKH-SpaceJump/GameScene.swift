@@ -31,7 +31,7 @@ class GameScene: SKScene {
     //spriteengine
     var previoustime : TimeInterval = 0
     var playerfacingright = true
-    let playerspeed = 4.0
+    let playerspeed = 5.0
     
     //player state
     
@@ -56,7 +56,7 @@ class GameScene: SKScene {
         
         physicsWorld.contactDelegate = self
 //
-//        let soundaction = SKAction.repeatForever(SKAction.playSoundFileNamed("music.wav", waitForCompletion: false))
+//        let soundaction = SKAction.repeatForever(SKAction.playSoundFileNamed("backost.wav", waitForCompletion: false))
 //        run(soundaction)
       
         Cameranode = childNode(withName: "CameraNode") as? SKCameraNode
@@ -94,7 +94,7 @@ class GameScene: SKScene {
         
         scorelabel.fontColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         scorelabel.fontSize = 24
-        scorelabel.fontName = "Ariel"
+        scorelabel.fontName = "Arial"
         scorelabel.horizontalAlignmentMode = .right
         scorelabel.text = String(score)
         Cameranode?.addChild(scorelabel)
@@ -158,12 +158,15 @@ extension GameScene
        {
         for touch in touches
         {
+            playerstate.enter(landingState.self)
+            
             let xCoordiante = touch.location(in: joystick!).x
             let xlimit : CGFloat = 200.0
             if xCoordiante > -xlimit && xCoordiante < xlimit
             {
                 resetknob()
             }
+           
         }
        }
     

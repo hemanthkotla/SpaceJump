@@ -50,7 +50,7 @@ class Jumping: PlayerState {
         
         finishedJumping = false
         
-        playerNode.run(.applyForce(CGVector(dx: 0, dy: 75), duration: 0.1 ))
+        playerNode.run(.applyForce(CGVector(dx: 0, dy: 160), duration: 0.1 ))
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in self.finishedJumping = true }
         

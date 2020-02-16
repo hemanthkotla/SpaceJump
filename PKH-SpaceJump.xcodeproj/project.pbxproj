@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90A7E89723F9BD5D00203E02 /* Intro.sks in Resources */ = {isa = PBXBuildFile; fileRef = 90A7E89623F9BD5D00203E02 /* Intro.sks */; };
 		90C543C123F4A27900B01E0E /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C543C023F4A27900B01E0E /* Sound.swift */; };
 		90C543C323F4A63400B01E0E /* backost.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90C543C223F4A63400B01E0E /* backost.wav */; };
 		90C543C523F4A78500B01E0E /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90C543C423F4A78500B01E0E /* music.wav */; };
@@ -30,9 +31,11 @@
 		90DC0AEA23F4795200FF9E22 /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC0AE923F4795200FF9E22 /* Level1.swift */; };
 		90DC0AEC23F47B9400FF9E22 /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC0AEB23F47B9400FF9E22 /* Level2.swift */; };
 		90DC0AEE23F47BBF00FF9E22 /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 90DC0AED23F47BBF00FF9E22 /* Level2.sks */; };
+		90FB551223F9C69C00FE4E40 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB551123F9C69C00FE4E40 /* Intro.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		90A7E89623F9BD5D00203E02 /* Intro.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro.sks; sourceTree = "<group>"; };
 		90C543C023F4A27900B01E0E /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		90C543C223F4A63400B01E0E /* backost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = backost.wav; sourceTree = "<group>"; };
 		90C543C423F4A78500B01E0E /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music.wav; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		90DC0AE923F4795200FF9E22 /* Level1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
 		90DC0AEB23F47B9400FF9E22 /* Level2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
 		90DC0AED23F47BBF00FF9E22 /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
+		90FB551123F9C69C00FE4E40 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				90DC0AEB23F47B9400FF9E22 /* Level2.swift */,
 				90DC0AED23F47BBF00FF9E22 /* Level2.sks */,
 				90DC0AE723F4781A00FF9E22 /* GameOver.swift */,
+				90FB551123F9C69C00FE4E40 /* Intro.swift */,
+				90A7E89623F9BD5D00203E02 /* Intro.sks */,
 				90C543C023F4A27900B01E0E /* Sound.swift */,
 				90DC0AD223F0D40500FF9E22 /* PlayerState.swift */,
 				90DC0ABE23F0B87100FF9E22 /* Actions.sks */,
@@ -188,6 +194,7 @@
 				90DC0ADF23F4772800FF9E22 /* meteorFallingSound.m4a in Resources */,
 				90C543C323F4A63400B01E0E /* backost.wav in Resources */,
 				90DC0AE023F4772800FF9E22 /* levelUpSound.wav in Resources */,
+				90A7E89723F9BD5D00203E02 /* Intro.sks in Resources */,
 				90DC0ADE23F4772800FF9E22 /* oxygenSound.wav in Resources */,
 				90DC0ABD23F0B87100FF9E22 /* Level1.sks in Resources */,
 				90DC0AEE23F47BBF00FF9E22 /* Level2.sks in Resources */,
@@ -211,6 +218,7 @@
 			files = (
 				90DC0AEA23F4795200FF9E22 /* Level1.swift in Sources */,
 				90DC0AC123F0B87100FF9E22 /* GameScene.swift in Sources */,
+				90FB551223F9C69C00FE4E40 /* Intro.swift in Sources */,
 				90DC0AE823F4781A00FF9E22 /* GameOver.swift in Sources */,
 				90DC0AC323F0B87100FF9E22 /* GameViewController.swift in Sources */,
 				90DC0AD323F0D40500FF9E22 /* PlayerState.swift in Sources */,
