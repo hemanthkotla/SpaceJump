@@ -56,8 +56,8 @@ class GameScene: SKScene {
         
         physicsWorld.contactDelegate = self
 //
-//        let soundaction = SKAction.repeatForever(SKAction.playSoundFileNamed("backost.wav", waitForCompletion: false))
-//        run(soundaction)
+        let backgroundSound = SKAudioNode(fileNamed: "backost.wav")
+        self.addChild(backgroundSound)
       
         Cameranode = childNode(withName: "CameraNode") as? SKCameraNode
         mountain1 = childNode(withName: "Mountain1")
@@ -86,17 +86,17 @@ class GameScene: SKScene {
         
         
         //timer for meteor
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {(timer) in
+        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true) {(timer) in
             self.renderMeteor()
         }
         
         scorelabel.position = CGPoint(x: (Cameranode?.position.x)! + 310, y: 140)
         
-        scorelabel.fontColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        scorelabel.fontColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         scorelabel.fontSize = 24
         scorelabel.fontName = "Arial"
         scorelabel.horizontalAlignmentMode = .right
-        scorelabel.text = String(score)
+        scorelabel.text = String("Oxygen : ") + String(score)
         Cameranode?.addChild(scorelabel)
     }
     
@@ -187,7 +187,7 @@ func resetknob()  {
 }
     func oxygentouch()  {
         score += 1
-        scorelabel.text = String(score)
+        scorelabel.text =   String("Oxygen : ") + String(score)
     }
     func listlives(count: Int)
         
@@ -376,15 +376,19 @@ extension GameScene : SKPhysicsContactDelegate
        
         if collision.matches(.player, .oxygen)
         {
-            if contact.bodyA.node?.name == "oxygen" {
-                contact.bodyA.node?.physicsBody?.categoryBitMask = 0
+            
+             if contact.bodyB.node?.name == "oxygen"
+             {
+                contact.bodyB.node?.physicsBody?.categoryBitMask = 0
                 
             }
             
-            else  if contact.bodyB.node?.name == "oxygen" {
-                           contact.bodyB.node?.physicsBody?.categoryBitMask = 0
-                contact.bodyB.node?.removeFromParent()
-                       }
+            else if contact.bodyA.node?.name == "oxygen"
+             {
+                contact.bodyA.node?.physicsBody?.categoryBitMask = 0
+                contact.bodyA.node?.removeFromParent()
+            }
+            
             
             if oxygenisnottouched
             {
@@ -425,7 +429,7 @@ func renderMeteor() {
     
     let node = SKSpriteNode(imageNamed: "meteor")
     node.name = "Meteor"
-    let randomXPosition = Int(arc4random_uniform(UInt32(self.size.width)))
+    let randomXPosition = Int(arc4random_uniform(UInt32(self.size.width * 4)))
     
     node.position = CGPoint(x: randomXPosition, y: 270)
     node.anchorPoint = CGPoint(x: 0.5, y: 1)

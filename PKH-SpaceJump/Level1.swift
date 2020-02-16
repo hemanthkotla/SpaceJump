@@ -28,6 +28,12 @@ class Level1 : GameScene {
     }
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
+        if score == 8 {
+                   let nextLevel = GameScene(fileNamed: "Level2")
+                   nextLevel?.scaleMode = .aspectFill
+                   view?.presentScene(nextLevel)
+                   run(Sound.levelUp.action)
+               }
 
         
     }

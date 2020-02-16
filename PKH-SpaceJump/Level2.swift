@@ -8,15 +8,36 @@
 
 import Foundation
 import SpriteKit
-class level2: GameScene {
+class Level2: GameScene
+{
+    
+
     override func didMove(to view: SKView)
     {
         super.didMove(to: view)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
-    {
-        super.touchesBegan(touches, with: event)
-    }
+    
+        
+        {
+            for touch in touches
+            {
+             if let joystickknob = joystickknob
+             {
+                 let location = touch.location(in: joystick!)
+                 joystickAction = joystickknob.frame.contains(location)
+             }
+             
+             let location = touch.location(in: self)
+             if !(joystick?.contains(location))!
+             {
+                 playerstate.enter(Jumping.self)
+                 run(Sound.jump.action)
+             }
+         }
+        }
+        
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
     }
@@ -25,5 +46,12 @@ class level2: GameScene {
     }
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
+        if score == 3 {
+            let nextLevel = GameScene(fileNamed: "Winner")
+            nextLevel?.scaleMode = .aspectFill
+            view?.presentScene(nextLevel)
+            run(Sound.levelUp.action)
+        }
+       
     }
 }
